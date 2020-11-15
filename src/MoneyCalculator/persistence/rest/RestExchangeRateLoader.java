@@ -1,8 +1,8 @@
-package MoneyCalculator.persistence.rest;
+package MoneyCalculator_13112020.persistence.rest;
 
-import MoneyCalculator.model.Currency;
-import moneycalculator.model.ExchangeRate;
-import MoneyCalculator.persistence.ExchangeRateLoader;
+import MoneyCalculator_13112020.model.Currency;
+import MoneyCalculator_13112020.model.ExchangeRate;
+import MoneyCalculator_13112020.persistence.ExchangeRateLoader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -15,7 +15,7 @@ public class RestExchangeRateLoader implements ExchangeRateLoader {
     @Override
     public ExchangeRate load(Currency from, Currency to) {
         try {
-            return new ExchangeRate(from, to, read(from.getCode(), to.getCode()));
+            return new ExchangeRate(from,to, read(from.getCode(), to.getCode()));
         } catch (MalformedURLException ex) {
             Logger.getLogger(RestExchangeRateLoader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

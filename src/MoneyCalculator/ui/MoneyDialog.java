@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MoneyCalculator.persistence.files;
+package MoneyCalculator_13112020.ui;
 
-/**
- *
- * @author Usuario
- */
-public class FileCurrencyListLoader {
-    
+import MoneyCalculator_13112020.model.Money;
+
+public interface MoneyDialog {
+    public Money get();
 }

@@ -1,5 +1,7 @@
 
-package moneycalculator.model;
+package MoneyCalculator_13112020.model;
+
+import java.time.LocalDate;
 
 public class ExchangeRate {
     private final Currency from, to;

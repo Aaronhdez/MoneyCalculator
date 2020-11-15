@@ -1,4 +1,4 @@
-package MoneyCalculator.model;
+package MoneyCalculator_13112020.model;
 
 public class Currency {
     private final String code;
