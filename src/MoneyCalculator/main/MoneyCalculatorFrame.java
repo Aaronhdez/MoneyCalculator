@@ -5,6 +5,7 @@
  */
 package MoneyCalculator_13112020.main;
 
+import MoneyCalculator_13112020.control.Command;
 import MoneyCalculator_13112020.model.Currency;
 import MoneyCalculator_13112020.ui.MoneyDialog;
 import MoneyCalculator_13112020.ui.MoneyDisplay;
@@ -15,7 +16,9 @@ import java.awt.Component;
 import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,6 +31,7 @@ public class MoneyCalculatorFrame extends JFrame{
     private final List<Currency> currencies;
     private MoneyDialog moneyDialog;
     private MoneyDisplay moneyDisplay;
+    private final Map<String,Command> commands = new HashMap<>();
 
     public MoneyCalculatorFrame(List<Currency> currencies) {
         this.currencies = currencies;
@@ -37,6 +41,14 @@ public class MoneyCalculatorFrame extends JFrame{
         this.add(toolbar(), BorderLayout.CENTER);
         this.add(moneyDisplay(), BorderLayout.SOUTH);
         this.setVisible(true);
+    }
+
+    public MoneyDialog getMoneyDialog() {
+        return moneyDialog;
+    }
+
+    public MoneyDisplay getMoneyDisplay() {
+        return moneyDisplay;
     }
 
     private Component moneyDialog() {
@@ -63,11 +75,15 @@ public class MoneyCalculatorFrame extends JFrame{
         return button;
     }
 
+    public void add(Command command){
+        commands.put(command.name(), command);
+    }
+    
     private ActionListener calculate() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //commands.get("calculate").execute();
+                commands.get("calculate").execute();
             }
         };
     }

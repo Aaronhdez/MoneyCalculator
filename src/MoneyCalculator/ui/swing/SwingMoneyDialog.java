@@ -35,11 +35,11 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
     
     @Override
     public Money get() {
-        return new Money(0, currency);
+        return new Money(Double.parseDouble(amount), currency);
     }
 
     private Component amount() {
-        JTextField textField = new JTextField("100");
+        JTextField textField = new JTextField("0");
         textField.setColumns(10);
         textField.getDocument().addDocumentListener(amountChanged());
         amount = textField.getText();

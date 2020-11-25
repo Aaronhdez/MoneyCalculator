@@ -26,12 +26,12 @@ public class FileCurrencyListLoader implements CurrencyListLoader{
         this.fileName = fileName;
     }
 
-
-    private Currency currencyOf(String item){
-        return null;
+    private Currency currencyOf(String line) {
+        String[] split = line.split(",");
+        return new Currency(split[0],split[1],split[2]);
     }
     
-@Override
+    @Override
     public List<Currency> currencies() {
         List<Currency> list = new ArrayList<>();
         try {

@@ -25,14 +25,16 @@ public class RestExchangeRateLoader implements ExchangeRateLoader {
     }
     
     private double read (String from, String to) throws IOException {
-        String line = read(new URL("http://api.fixer.io/latest?base=" + from + "&symbols=" + to));
-        return Double.parseDouble(line.substring(line.indexOf(to) +5, line.indexOf(")")));
+        String line = read(new URL("http://data.fixer.io/api/latest?access_key=fd1c12be2fb99cd3e070448f81731cb4&symbols="+from+","+to));
+        return Double.parseDouble(line.substring(line.indexOf(from)+5, line.lastIndexOf(",")));
     }
 
     private String read(URL url) throws IOException {
         InputStream is = url.openStream();
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[4096];
+        is.read(buffer);
         int length = is.read(buffer);
-        return new String(buffer,0,length);
+        String res = new String(buffer,0,length);
+        return res;
     }
 }
